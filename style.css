@@ -45,8 +45,8 @@ body {
 }
 
 .card-container {
-  /* max-width: 800px; */
-  width: 400px;
+  max-width: 400px;
+  width: 90%;
   height: auto;
   border-radius: 8px;
   background-color: #fff;
@@ -162,6 +162,10 @@ button:hover {
   font-size: 0.8rem;
 }
 
+.forgot-password {
+  font-weight: 400;
+}
+
 /* logout */
 
 button a {
@@ -171,7 +175,7 @@ button a {
 /* reset password */
 
 .highlight {
-  color: indianred;
+  color: #ed4264;
   font-size: 0.8rem;
   font-weight: bold;
 }

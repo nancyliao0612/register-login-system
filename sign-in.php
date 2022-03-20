@@ -34,7 +34,7 @@ session_start();
 
         // echo $result -> num_rows;
         if($result -> num_rows == 0){
-          echo "<div class='warning-message'><h3>We couldn’t find an account matching the email and password you entered. Please check your email and password and try again.</h3></div>";
+          echo "<div class='warning-message'>We couldn’t find an account matching the email and password you entered. Please check your email and password and try again.</div>";
         }else{
           $_SESSION["check"] = $userEmail;
           header("Location: userindex.php");
@@ -53,7 +53,7 @@ session_start();
             <input type="email" required name="email"/>
           </div>
           <div class="input-container full-width-input">
-            <label for="">Password &nbsp;<a href="resetPassword.php"> (forgot password?)</a></label>
+            <label for="">Password &nbsp;<a href="resetPassword.php" class="forgot-password"> (forgot password?)</a></label>
             <input type="password" name="upassword" placeholder="6+ characters" />
           </div>
           <button type="submit" name="submit">Sign in</button>

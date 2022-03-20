@@ -106,6 +106,5 @@
         </form>
       </div>
     </main>
-    <p><a href="registration.php" target="_blank">Registration</a></p>
   </body>
 </html>

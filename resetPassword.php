@@ -30,9 +30,9 @@ session_start();
         $result = $db -> query("UPDATE users SET userPassword = '$newPassword' and userPassword2 = '$newPassword2' WHERE userEmail = '$userEmail'");
 
         if($result && strlen($userEmail) !== 0 && strlen($newPassword) >= 6) {
-          echo "<div class='warning-message'>Your user password with the email<span class='highlight'>&nbsp;$userEmail&nbsp;</span>is reseted. You may <a href='index.php' class='highlight'>&nbsp;login&nbsp;</a> right now</div>";
+          echo "<div class='warning-message'>Your user password with the email<span class='highlight'>&nbsp;$userEmail&nbsp;</span>is reseted. You may <a href='login.php' class='highlight'>&nbsp;login&nbsp;</a> right now</div>";
         }else {
-          echo "<p class='warning-message'>something is wrong. Please try again</p>";
+          echo "<p class='warning-message'>Something is wrong. Please try again</p>";
         }
 
       }
