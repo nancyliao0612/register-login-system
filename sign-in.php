@@ -28,6 +28,10 @@ session_start();
 
         $result = $db -> query("SELECT * FROM users where userEmail = '$userEmail' and userPassword = '$password'");
 
+        $row = $result -> fetch_row();
+        $userName = $row[1]; 
+        $_SESSION["userName"] = $userName;
+
         // echo $result -> num_rows;
         if($result -> num_rows == 0){
           echo "<div class='warning-message'><h3>We couldn’t find an account matching the email and password you entered. Please check your email and password and try again.</h3></div>";
@@ -35,20 +39,21 @@ session_start();
           $_SESSION["check"] = $userEmail;
           header("Location: userindex.php");
         }
+
       }
     ?>
     <main class="card-wrapper">
       <div class="card-container">
         <?php
-        echo "<h2>👋 Hi " . $_SESSION['userName'] . "! You may sign in.</h2>";
+        echo "<h2>Sign in</h2>";
         ?>
-        <form action="login.php" method="post" autocomplete>
+        <form action="sign-in.php" method="post" autocomplete>
           <div class="input-container full-width-input">
             <label for="">Email</label>
             <input type="email" required name="email"/>
           </div>
           <div class="input-container full-width-input">
-            <label for="">Password</label>
+            <label for="">Password &nbsp;<a href="resetPassword.php"> (forgot password?)</a></label>
             <input type="password" name="upassword" placeholder="6+ characters" />
           </div>
           <button type="submit" name="submit">Sign in</button>

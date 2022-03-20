@@ -32,50 +32,77 @@
   <body>
     <?php
       if(isset($_POST["submit"])){
-        $firstName = $_POST["firstName"];
-        $lastName = $_POST["lastName"];
+        $fullName = $_POST["fullName"];
+        $userName = $_POST["userName"];
+        $email = $_POST["email"];
         $upassword = $_POST["upassword"];
         $upassword2 = $_POST["upassword2"];
 
-        if($upassword != $upassword2){
-          echo "passwords don't match";
-        }
-        else{
-        $db = new mysqli("us-cdbr-east-05.cleardb.net", "ba8a20c077011f", "a2f82246", "heroku_348200725298d23");
-        $result = $db -> query("INSERT INTO users(firstName, lastName, upassword) VALUES('$firstName', '$lastName', '$upassword')");
-
-        echo "Hello $firstName, you successfully created your account!";
+        if($upassword === $upassword2 && strlen($upassword) >= 6){
+          $db = new mysqli("us-cdbr-east-05.cleardb.net", "ba8a20c077011f", "a2f82246", "heroku_348200725298d23");
+          $result = $db -> query("INSERT INTO users (fullName, userName, userEmail	,userPassword, userPassword2) VALUES('$fullName', '$userName', '$email', '$upassword', '$upassword2')");
+          $_SESSION["userName"] = $userName;
+          // echo "Hello $firstName, you successfully created your account!";
+          header("Location: login.php");
         }
       }
     ?>
     <main class="card-wrapper">
       <div class="card-container">
         <h2>Sign up with your email</h2>
-        <h4>Already have an account?<span><a href="login.php" target="_blank">&nbsp;Sign in</a></span></h4>
-        <form action="index.php" method="post">
+        <h4>Already have an account?<span><a href="sign-in.php" target="_blank">&nbsp;Sign in</a></span></h4>
+        <div class="warning-texts">
+          <?php
+          if(isset($_POST["submit"])){
+            if(strlen($fullName) === 0){
+              echo "<ul><li>Name can't be blank</li>";
+            }
+            if(strlen($userName) === 0){
+              echo "<li>Username can't be blank</li>";
+            }
+            if(strlen($email) === 0){
+              echo "<li>Email can't be blank</li>";
+            }
+            if(strlen($upassword) === 0){
+              echo "<li>Password can't be blank</li></ul>";
+            }
+          }
+          ?>
+        </div>
+        <form action="index.php" method="post" autocomplete>
           <div class="input-wrapper">
             <div class="input-container">
-              <label for="">First Name</label>
-              <input type="text" name="firstName"/>
+              <label for="">Name</label>
+              <input type="text" name="fullName"/>
             </div>
             <div class="input-container">
-              <label for="">Last Name</label>
-              <input type="text" name="lastName"/>
+              <label for="">Username</label>
+              <input type="text" name="userName"/>
             </div>
           </div>
           <div class="input-container full-width-input">
             <label for="">Email</label>
-            <input type="email" required name="email"/>
+            <input type="email" name="email"/>
           </div>
           <div class="input-container full-width-input">
-            <label for="">Password</label>
-            <input type="password" name="upassword"/>
+            <label class="label-inline" for=""><p>Password&nbsp;&nbsp;</p>
+            <?php
+            if(isset($_POST["submit"])){
+              if($upassword !== $upassword2){
+                echo "<span>*Passwords don't match</span>";
+              } else if($upassword === $upassword2 && strlen($upassword) <= 6 && strlen($upassword) > 0){
+                echo "<span>*Password is too short</span>";
+              }
+            }
+            ?>
+            </label>
+            <input type="password" name="upassword" placeholder="6+ characters" />
           </div>
           <div class="input-container full-width-input">
             <label for="">Confirm Password</label>
-            <input type="password" name="upassword2"/>
+            <input type="password" name="upassword2" placeholder="6+ characters" />
           </div>
-          <button name="submit">Create Account</button>
+          <button type="submit" name="submit">Create Account</button>
         </form>
       </div>
     </main>

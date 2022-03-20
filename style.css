@@ -16,6 +16,8 @@ body {
     #ffedbc,
     #ed4264
   ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  font-family: "Noto Sans", sans-serif;
+  color: #333;
 }
 
 body {
@@ -44,15 +46,18 @@ body {
 
 .card-container {
   /* max-width: 800px; */
-  width: 500px;
-  height: 600px;
+  width: 400px;
+  height: auto;
   border-radius: 8px;
   background-color: #fff;
-  font-family: "Noto Sans";
-  color: #333;
   padding: 40px;
   box-shadow: 0px 10px 20px 0 #3d7eaa5e;
-  line-height: 3rem;
+  line-height: 2rem;
+  font-size: 0.9rem;
+}
+
+.card-container > h2 {
+  font-size: 1.4rem;
 }
 
 .card-container > h4 {
@@ -63,31 +68,51 @@ body {
 .input-wrapper {
   display: flex;
   justify-content: space-between;
-  margin-top: 25px;
+  margin-top: 20px;
 }
 
 .input-container {
   display: flex;
   flex-direction: column;
-  line-height: 2rem;
+  line-height: 1.5rem;
   width: 45%;
-  margin-top: 20px;
+  margin-top: 15px;
 }
 
 .input-container > input {
   border: none;
   outline-style: none;
-  height: 30px;
-  font-size: 1rem;
-  border-bottom: solid 1.5px rgba(153, 153, 153, 0.842);
+  height: 25px;
+  font-size: 0.8rem;
+  border-bottom: solid 1.2px rgba(153, 153, 153, 0.842);
+  text-indent: 10px;
 }
 
-a {
+a,
+span a {
   text-decoration: none;
+  color: #333;
+}
+
+span a:hover {
+  color: #b0dab9;
+  font-weight: 700;
 }
 
 .full-width-input {
   width: 100%;
+}
+
+.label-inline {
+  display: flex;
+  align-items: center;
+}
+
+.label-inline span,
+.label-inline span:hover {
+  font-size: 0.8rem;
+  color: #ed4264;
+  font-weight: 400;
 }
 
 .input-container:hover {
@@ -104,12 +129,49 @@ button {
   margin-top: 30px;
   border-radius: 5px;
   border-style: none;
-  height: 50px;
-  line-height: 50px;
+  height: 45px;
+  line-height: 45px;
   text-align: center;
   color: #fff;
-  font-size: 1rem;
   font-weight: 700;
   cursor: pointer;
   background-color: #b0dab9;
+}
+
+button:hover {
+  background-color: #6decb9;
+}
+
+.warning-texts {
+  color: #ed4264;
+  font-size: 0.8rem;
+  line-height: 1.2rem;
+  margin-top: 10px;
+  margin-left: 20px;
+}
+
+/* login page */
+
+.warning-message {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #fff;
+  width: 100vw;
+  height: 40px;
+  font-size: 0.8rem;
+}
+
+/* logout */
+
+button a {
+  color: #fff;
+}
+
+/* reset password */
+
+.highlight {
+  color: indianred;
+  font-size: 0.8rem;
+  font-weight: bold;
 }
