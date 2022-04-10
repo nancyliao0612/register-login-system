@@ -31,6 +31,7 @@
   </head>
   <body>
     <?php
+      // check if the create account button was clicked or not
       if(isset($_POST["submit"])){
         $fullName = $_POST["fullName"];
         $userName = $_POST["userName"];
@@ -39,6 +40,7 @@
         $upassword2 = $_POST["upassword2"];
 
         if($upassword === $upassword2 && strlen($upassword) >= 6){
+          // connect to the database - host, username, password, dbname
           $db = new mysqli("us-cdbr-east-05.cleardb.net", "ba8a20c077011f", "a2f82246", "heroku_348200725298d23");
           $result = $db -> query("INSERT INTO users (fullName, userName, userEmail	,userPassword, userPassword2) VALUES('$fullName', '$userName', '$email', '$upassword', '$upassword2')");
           $_SESSION["userName"] = $userName;

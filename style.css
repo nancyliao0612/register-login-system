@@ -82,6 +82,7 @@ body {
 .input-container > input {
   border: none;
   outline-style: none;
+  border-radius: 0;
   height: 25px;
   font-size: 0.8rem;
   border-bottom: solid 1.2px rgba(153, 153, 153, 0.842);
@@ -136,6 +137,10 @@ button {
   font-weight: 700;
   cursor: pointer;
   background-color: #b0dab9;
+}
+
+button a {
+  font-size: 0.85rem;
 }
 
 button:hover {
